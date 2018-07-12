@@ -296,20 +296,19 @@ export class ImmyBox {
 
   positionDropdownArea() {
     let input_offset = this.element.getBoundingClientRect();
-    let input_height = this.element.clientHeight;
+    let input_height = 2 * this.element.clientHeight;
     let input_width = this.element.clientWidth;
     let results_height = this.queryResultArea.clientHeight;
-    let results_bottom = input_offset.top + input_height + results_height;
+    let results_bottom = input_height + results_height;
     let window_bottom = window.clientHeight + window.scrollTop;
 
     // set the dimmensions and position
     this.dropdownArea.style.width = `${input_width}px`;
-    this.dropdownArea.style.left = `${input_offset.left}px`;
 
     if (results_bottom > window_bottom) {
-      this.dropdownArea.style.top = `${input_offset.top - results_height}px`;
+      this.dropdownArea.style.top = `${results_height}px`;
     } else {
-      this.dropdownArea.style.top = `${input_offset.top + input_height}px`;
+      this.dropdownArea.style.top = `${input_height}px`;
     }
 
     const queryResultArea = this.dropdownArea.querySelector(`.${plugin_name}_results`);
@@ -397,7 +396,7 @@ export class ImmyBox {
   }
 
   _showResults() {
-    !this.dropdownAreaVisible && document.body.appendChild(this.dropdownArea);
+    !this.dropdownAreaVisible && this.element.parentNode.appendChild(this.dropdownArea);
     this.dropdownAreaVisible = true;
     this.scroll();
     this.positionDropdownArea();
@@ -430,7 +429,7 @@ export class ImmyBox {
       } else {
         this.scroll_position = null;
       }
-      document.body.removeChild(this.dropdownArea);
+      this.element.parentNode.removeChild(this.dropdownArea);
       this.dropdownAreaVisible = false;
     }
   }

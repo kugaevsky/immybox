@@ -1,4 +1,7 @@
-(function webpackUniversalModuleDefinition(root, factory) {
+/*!
+ * Immybox.js Version 1.0.0-beta3
+ * 
+ */(function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
@@ -11,41 +14,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmory imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmory exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		Object.defineProperty(exports, name, {
@@ -54,7 +57,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			get: getter
 /******/ 		});
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -63,15 +66,15 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -181,12 +184,10 @@ function nodeOrParentMatchingSelector(element, selector) {
 /* 1 */
 /***/ function(module, exports) {
 
-module.exports = function _isPlaceholder(a) {
-  return a != null &&
-         typeof a === 'object' &&
-         a['@@functional/placeholder'] === true;
-};
-
+function _isPlaceholder(a) {
+       return a != null && typeof a === 'object' && a['@@functional/placeholder'] === true;
+}
+module.exports = _isPlaceholder;
 
 /***/ },
 /* 2 */
@@ -200,15 +201,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ImmyBox = undefined;
 
-var _forEach = __webpack_require__(4);
+var _forEach2 = __webpack_require__(4);
 
-var _forEach2 = _interopRequireDefault(_forEach);
+var _forEach3 = _interopRequireDefault(_forEach2);
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 var _utils = __webpack_require__(0);
 
@@ -228,7 +227,7 @@ var removeActive = function removeActive(node) {
 var addActive = function addActive(node) {
   return (0, _utils.addClass)(node, 'active');
 };
-var removeActiveList = (0, _forEach2.default)(removeActive);
+var removeActiveList = (0, _forEach3.default)(removeActive);
 
 function moveActive(from_el, to_el) {
   removeActive(from_el);
@@ -258,16 +257,10 @@ var _defaults = {
   },
   formatChoice: function formatChoice(query) {
     if (query) {
-      var _ret = function () {
-        var reg = new RegExp(query.replace(/[#-.]|[[-^]|[?|{}]/g, '\\$&'), 'gi');
-        return {
-          v: function v(choice) {
-            return choice.text.replace(reg, '<span class="highlight">$&</span>');
-          }
-        };
-      }();
-
-      if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+      var reg = new RegExp(query.replace(/[#-.]|[[-^]|[?|{}]/g, '\\$&'), 'gi');
+      return function (choice) {
+        return choice.text.replace(reg, '<span class="highlight">$&</span>');
+      };
     } else return function (choice) {
       return choice.text;
     };
@@ -490,59 +483,55 @@ var ImmyBox = exports.ImmyBox = function () {
 
       var filteredChoices = void 0;
       if (query === '') filteredChoices = this.indexed_choices;else {
-        (function () {
-          var filter = _this2.options.filterFn(query);
-          filteredChoices = _this2.indexed_choices.filter(function (_ref3, index) {
-            var choice = _ref3.choice;
-            return filter(choice, index);
-          });
-        })();
+        var filter = this.options.filterFn(query);
+        filteredChoices = this.indexed_choices.filter(function (_ref3, index) {
+          var choice = _ref3.choice;
+          return filter(choice, index);
+        });
       }
       var truncatedChoices = filteredChoices.slice(0, this.options.maxResults);
       if (truncatedChoices.length) {
-        (function () {
-          if (_this2.defaultSelectedChoice) {
-            if (filteredChoices.indexOf(_this2.defaultSelectedChoice) >= 0) {
-              if (truncatedChoices.indexOf(_this2.defaultSelectedChoice) === -1) {
-                truncatedChoices.unshift(_this2.defaultSelectedChoice);
-                truncatedChoices.pop();
-              } else {
-                truncatedChoices = truncatedChoices.filter(function (c) {
-                  return c.choice.value !== _this2.defaultSelectedChoice.value;
-                });
-                truncatedChoices.unshift(_this2.defaultSelectedChoice);
-              }
+        if (this.defaultSelectedChoice) {
+          if (filteredChoices.indexOf(this.defaultSelectedChoice) >= 0) {
+            if (truncatedChoices.indexOf(this.defaultSelectedChoice) === -1) {
+              truncatedChoices.unshift(this.defaultSelectedChoice);
+              truncatedChoices.pop();
+            } else {
+              truncatedChoices = truncatedChoices.filter(function (c) {
+                return c.choice.value !== _this2.defaultSelectedChoice.value;
+              });
+              truncatedChoices.unshift(this.defaultSelectedChoice);
             }
           }
-          var formatter = _this2.options.formatChoice(query);
-          var selected_one = false;
-          var list = document.createElement('ul');
-          var results = truncatedChoices.map(function (_ref4) {
-            var choice = _ref4.choice;
-            var index = _ref4.index;
+        }
+        var formatter = this.options.formatChoice(query);
+        var selected_one = false;
+        var list = document.createElement('ul');
+        var results = truncatedChoices.map(function (_ref4) {
+          var choice = _ref4.choice,
+              index = _ref4.index;
 
-            var li = document.createElement('li');
-            li.setAttribute('class', plugin_name + '_choice');
-            li.setAttribute('data-immybox-value-index', index);
-            li.innerHTML = formatter(choice);
-            if (_this2.selectedChoice && index === _this2.selectedChoice.index) {
-              selected_one = true;
-              addActive(li);
-            }
-            list.appendChild(li);
-            return li;
-          });
-          !selected_one && addActive(results[0]);
-
-          _this2.cleanNode(_this2.dropdownArea);
-          _this2.cleanNode(_this2.queryResultArea);
-          _this2.queryResultArea.appendChild(list);
-          _this2.dropdownArea.appendChild(_this2.queryResultArea);
-          if (_this2.queryResultsTextArea) {
-            _this2.queryResultsTextArea.textContent = _this2.results_text_maker(truncatedChoices.length, filteredChoices.length);
-            _this2.dropdownArea.appendChild(_this2.queryResultsTextArea);
+          var li = document.createElement('li');
+          li.setAttribute('class', plugin_name + '_choice');
+          li.setAttribute('data-immybox-value-index', index);
+          li.innerHTML = formatter(choice);
+          if (_this2.selectedChoice && index === _this2.selectedChoice.index) {
+            selected_one = true;
+            addActive(li);
           }
-        })();
+          list.appendChild(li);
+          return li;
+        });
+        !selected_one && addActive(results[0]);
+
+        this.cleanNode(this.dropdownArea);
+        this.cleanNode(this.queryResultArea);
+        this.queryResultArea.appendChild(list);
+        this.dropdownArea.appendChild(this.queryResultArea);
+        if (this.queryResultsTextArea) {
+          this.queryResultsTextArea.textContent = this.results_text_maker(truncatedChoices.length, filteredChoices.length);
+          this.dropdownArea.appendChild(this.queryResultsTextArea);
+        }
       } else {
         this.cleanNode(this.dropdownArea);
         this.dropdownArea.appendChild(this.noResultsArea);
@@ -561,20 +550,19 @@ var ImmyBox = exports.ImmyBox = function () {
     key: 'positionDropdownArea',
     value: function positionDropdownArea() {
       var input_offset = this.element.getBoundingClientRect();
-      var input_height = this.element.clientHeight;
+      var input_height = 2 * this.element.clientHeight;
       var input_width = this.element.clientWidth;
       var results_height = this.queryResultArea.clientHeight;
-      var results_bottom = input_offset.top + input_height + results_height;
+      var results_bottom = input_height + results_height;
       var window_bottom = window.clientHeight + window.scrollTop;
 
       // set the dimmensions and position
       this.dropdownArea.style.width = input_width + 'px';
-      this.dropdownArea.style.left = input_offset.left + 'px';
 
       if (results_bottom > window_bottom) {
-        this.dropdownArea.style.top = input_offset.top - results_height + 'px';
+        this.dropdownArea.style.top = results_height + 'px';
       } else {
-        this.dropdownArea.style.top = input_offset.top + input_height + 'px';
+        this.dropdownArea.style.top = input_height + 'px';
       }
 
       var queryResultArea = this.dropdownArea.querySelector('.' + plugin_name + '_results');
@@ -669,7 +657,7 @@ var ImmyBox = exports.ImmyBox = function () {
   }, {
     key: '_showResults',
     value: function _showResults() {
-      !this.dropdownAreaVisible && document.body.appendChild(this.dropdownArea);
+      !this.dropdownAreaVisible && this.element.parentNode.appendChild(this.dropdownArea);
       this.dropdownAreaVisible = true;
       this.scroll();
       this.positionDropdownArea();
@@ -695,7 +683,7 @@ var ImmyBox = exports.ImmyBox = function () {
   }, {
     key: 'hideResults',
     value: function hideResults() {
-      var save_scroll_position = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+      var save_scroll_position = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
       if (this.dropdownAreaVisible) {
         if (save_scroll_position) {
@@ -708,7 +696,7 @@ var ImmyBox = exports.ImmyBox = function () {
         } else {
           this.scroll_position = null;
         }
-        document.body.removeChild(this.dropdownArea);
+        this.element.parentNode.removeChild(this.dropdownArea);
         this.dropdownAreaVisible = false;
       }
     }
@@ -781,20 +769,19 @@ var ImmyBox = exports.ImmyBox = function () {
 
       try {
         for (var _iterator = event_listeners.get(this)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var _step$value = _slicedToArray(_step.value, 2);
+          var _step$value = _slicedToArray(_step.value, 2),
+              node = _step$value[0],
+              events = _step$value[1];
 
-          var node = _step$value[0];
-          var events = _step$value[1];
           var _iteratorNormalCompletion2 = true;
           var _didIteratorError2 = false;
           var _iteratorError2 = undefined;
 
           try {
             for (var _iterator2 = events[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-              var _step2$value = _slicedToArray(_step2.value, 2);
-
-              var event_name = _step2$value[0];
-              var handler = _step2$value[1];
+              var _step2$value = _slicedToArray(_step2.value, 2),
+                  event_name = _step2$value[0],
+                  handler = _step2$value[1];
 
               node.removeEventListener(event_name, handler);
             }
@@ -940,9 +927,9 @@ document.addEventListener('DOMContentLoaded', function () {
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-var _checkForMethod = __webpack_require__(5);
-var _curry2 = __webpack_require__(7);
+var _checkForMethod = /*#__PURE__*/__webpack_require__(5);
 
+var _curry2 = /*#__PURE__*/__webpack_require__(7);
 
 /**
  * Iterate over an input `list`, calling a provided function `fn` for each
@@ -973,11 +960,14 @@ var _curry2 = __webpack_require__(7);
  *
  *      var printXPlusFive = x => console.log(x + 5);
  *      R.forEach(printXPlusFive, [1, 2, 3]); //=> [1, 2, 3]
- *      //-> 6
- *      //-> 7
- *      //-> 8
+ *      // logs 6
+ *      // logs 7
+ *      // logs 8
+ * @symb R.forEach(f, [a, b, c]) = [a, b, c]
  */
-module.exports = _curry2(_checkForMethod('forEach', function forEach(fn, list) {
+
+
+var forEach = /*#__PURE__*/_curry2( /*#__PURE__*/_checkForMethod('forEach', function forEach(fn, list) {
   var len = list.length;
   var idx = 0;
   while (idx < len) {
@@ -986,46 +976,43 @@ module.exports = _curry2(_checkForMethod('forEach', function forEach(fn, list) {
   }
   return list;
 }));
-
+module.exports = forEach;
 
 /***/ },
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-var _isArray = __webpack_require__(8);
-var _slice = __webpack_require__(9);
-
+var _isArray = /*#__PURE__*/__webpack_require__(8);
 
 /**
- * Similar to hasMethod, this checks whether a function has a [methodname]
- * function. If it isn't an array it will execute that function otherwise it
- * will default to the ramda implementation.
+ * This checks whether a function has a [methodname] function. If it isn't an
+ * array it will execute that function otherwise it will default to the ramda
+ * implementation.
  *
  * @private
  * @param {Function} fn ramda implemtation
  * @param {String} methodname property to check for a custom implementation
  * @return {Object} Whatever the return value of the method is.
  */
-module.exports = function _checkForMethod(methodname, fn) {
-  return function() {
+
+
+function _checkForMethod(methodname, fn) {
+  return function () {
     var length = arguments.length;
     if (length === 0) {
       return fn();
     }
     var obj = arguments[length - 1];
-    return (_isArray(obj) || typeof obj[methodname] !== 'function') ?
-      fn.apply(this, arguments) :
-      obj[methodname].apply(obj, _slice(arguments, 0, length - 1));
+    return _isArray(obj) || typeof obj[methodname] !== 'function' ? fn.apply(this, arguments) : obj[methodname].apply(obj, Array.prototype.slice.call(arguments, 0, length - 1));
   };
-};
-
+}
+module.exports = _checkForMethod;
 
 /***/ },
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-var _isPlaceholder = __webpack_require__(1);
-
+var _isPlaceholder = /*#__PURE__*/__webpack_require__(1);
 
 /**
  * Optimized internal one-arity curry function.
@@ -1035,7 +1022,9 @@ var _isPlaceholder = __webpack_require__(1);
  * @param {Function} fn The function to curry.
  * @return {Function} The curried function.
  */
-module.exports = function _curry1(fn) {
+
+
+function _curry1(fn) {
   return function f1(a) {
     if (arguments.length === 0 || _isPlaceholder(a)) {
       return f1;
@@ -1043,16 +1032,16 @@ module.exports = function _curry1(fn) {
       return fn.apply(this, arguments);
     }
   };
-};
-
+}
+module.exports = _curry1;
 
 /***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-var _curry1 = __webpack_require__(6);
-var _isPlaceholder = __webpack_require__(1);
+var _curry1 = /*#__PURE__*/__webpack_require__(6);
 
+var _isPlaceholder = /*#__PURE__*/__webpack_require__(1);
 
 /**
  * Optimized internal two-arity curry function.
@@ -1062,23 +1051,27 @@ var _isPlaceholder = __webpack_require__(1);
  * @param {Function} fn The function to curry.
  * @return {Function} The curried function.
  */
-module.exports = function _curry2(fn) {
+
+
+function _curry2(fn) {
   return function f2(a, b) {
     switch (arguments.length) {
       case 0:
         return f2;
       case 1:
-        return _isPlaceholder(a) ? f2
-             : _curry1(function(_b) { return fn(a, _b); });
+        return _isPlaceholder(a) ? f2 : _curry1(function (_b) {
+          return fn(a, _b);
+        });
       default:
-        return _isPlaceholder(a) && _isPlaceholder(b) ? f2
-             : _isPlaceholder(a) ? _curry1(function(_a) { return fn(_a, b); })
-             : _isPlaceholder(b) ? _curry1(function(_b) { return fn(a, _b); })
-             : fn(a, b);
+        return _isPlaceholder(a) && _isPlaceholder(b) ? f2 : _isPlaceholder(a) ? _curry1(function (_a) {
+          return fn(_a, b);
+        }) : _isPlaceholder(b) ? _curry1(function (_b) {
+          return fn(a, _b);
+        }) : fn(a, b);
     }
   };
-};
-
+}
+module.exports = _curry2;
 
 /***/ },
 /* 8 */
@@ -1097,53 +1090,12 @@ module.exports = function _curry2(fn) {
  *      _isArray({}); //=> false
  */
 module.exports = Array.isArray || function _isArray(val) {
-  return (val != null &&
-          val.length >= 0 &&
-          Object.prototype.toString.call(val) === '[object Array]');
+  return val != null && val.length >= 0 && Object.prototype.toString.call(val) === '[object Array]';
 };
 
-
 /***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-/**
- * An optimized, private array `slice` implementation.
- *
- * @private
- * @param {Arguments|Array} args The array or arguments object to consider.
- * @param {Number} [from=0] The array index to slice from, inclusive.
- * @param {Number} [to=args.length] The array index to slice to, exclusive.
- * @return {Array} A new, sliced array.
- * @example
- *
- *      _slice([1, 2, 3, 4, 5], 1, 3); //=> [2, 3]
- *
- *      var firstThreeArgs = function(a, b, c, d) {
- *        return _slice(arguments, 0, 3);
- *      };
- *      firstThreeArgs(1, 2, 3, 4); //=> [1, 2, 3]
- */
-module.exports = function _slice(args, from, to) {
-  switch (arguments.length) {
-    case 1: return _slice(args, 0, args.length);
-    case 2: return _slice(args, from, args.length);
-    default:
-      var list = [];
-      var idx = 0;
-      var len = Math.max(0, Math.min(args.length, to) - from);
-      while (idx < len) {
-        list[idx] = args[from + idx];
-        idx += 1;
-      }
-      return list;
-  }
-};
-
-
-/***/ },
-/* 10 */,
-/* 11 */
+/* 9 */,
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(2);
